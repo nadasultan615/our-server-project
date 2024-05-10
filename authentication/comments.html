@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Experience</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<link rel="stylesheet" href="{% static 'css/comments.css' %}">
+		
+	</head>
+	<body>
+		{% csrf_token %}
+		    <div id="navbar">
+        <a href="{% url 'main' %}">
+            <img src="{% static 'img/logo.png' %}" alt=""  >
+        </a>
+        
+        <ul>
+            <li> <a href="{% url 'main' %}">Home</a></li>
+            <li> <a href="{% url 'main' %}#faqs">FAQs</a></li>
+            <li><a href ="{% url 'quiz' %}">Quiz</a><li>
+            <li><a href ="{% url 'jobs' %}">Available Jobs</a><li>
+            <li> <a href="{% url 'roadmaps' %}">Roadmaps</a></li>
+            <li> <a href="{% url 'show_comments' %}">Students Experience</a></li>
+        </ul>
+    </div>
+		<section id="Components" class="section-testimonials1">
+			<div class="page-padding">
+				<div class="container-large">
+					<div class="padding-vertical padding-large">
+						<div class="margin-bottom margin-large">
+              <h2>Students Experiences</h2>
+              <div style="display:flex; align-items:center; justify-content:end;">
+                <a class="button" href="http://127.0.0.1:8000/Add%20Experience">
+                 Add Your Experience
+                </a>
+              </div> 
+                <style>
+                  .margin-bottom.margin-large{
+                    display:grid;
+                    grid-template-columns: 1fr 1fr;
+                    margin-bottom:30px;
+                  }
+                 .button {
+                    padding: 15px 20px;
+                    margin-top: 15px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    background-color: #23ec0c;
+                    color: #fff;
+                    border-radius: 30px;
+                    border-style: none;
+                }
+
+                </style>
+              </a>
+
+            </div>
+						<div class="testimonials1_slide w-slide" style="display: grid; grid-column-gap:20px; grid-template-columns:1fr 1fr; grid-row-gap:20px;">
+							{% for comment in authentication %}
+							<div class="testimonials1_content">
+								<div class="block_top-wrap">
+									<img src="https://uploads-ssl.webflow.com/61260163e5462d8085c0e651/6195888fc1edd105f8bb8de0_trustpilot-5-etoile%20vert.png" loading="lazy" alt="5 etoiles trustpilot" class="block-profile-img" />
+								</div>
+								<p>{{ comment.body }}</p>
+								<div class="testimonials1_client-wrapper">
+									<div class="testimonials1_client-image-wrapper">
+										<img src="https://i.pinimg.com/736x/2c/f5/58/2cf558ab8c1f12b43f7326945672805e.jpg" loading="lazy" alt="" class="testimonials1_client-image" />
+									</div>
+									<div class="testimonials1_client-details">
+										<div>{{ comment.name }}</div>
+										<div class="testimonials1_client-line"></div>
+										<div>Major: </div>
+										<div>{{comment.major}}</div>
+										<div class="testimonials1_client-line"></div>
+										<div>Posted on: {{ comment.created_at }}</div>
+									</div>
+								</div>
+							</div>
+							{% empty %}
+							<p>No comments yet.</p>
+							{% endfor %}
+						</div>
+						<form action="{% url 'show_comments' %}" method="post">
+							{% csrf_token %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

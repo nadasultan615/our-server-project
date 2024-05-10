@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialization Selection Test</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    <!-- Add favicon -->
+</head>
+<body>
+
+    {% csrf_token %}
+
+    <div id="navbar">
+        <a href="{% url 'main' %}">
+            <img src="{% static 'img/logo.png' %}" alt="">
+        </a>
+        <ul>
+            <li> <a href="{% url 'main' %}">Home</a></li>
+            <li> <a href="{% url 'main' %}#faqs">FAQs</a></li>
+            <li><a href ="{% url 'quiz' %}">Quiz</a></li>
+            <li><a href ="{% url 'jobs' %}">Available Jobs</a></li>
+            <li> <a href="{% url 'roadmaps' %}">Roadmaps</a></li>
+            <li> <a href="{% url 'show_comments' %}">Students Experience</a></li>
+        </ul>
+    </div>
+
+    <div id="question-container">
+        <h1>Major Selection Test</h1>
+        <div class="question-box">
+            <div id="question"></div>
+        </div>
+        <div id="options"></div>
+        <button id="prev-btn">Previous</button>
+    </div>
+
+    <!-- Result Section (Initially Hidden) -->
+    <div id="result-container" style="display: none;">
+        <h2>Your Suitable Major:</h2>
+        <div class="result-box">
+            <p id="result"></p> <!-- This will display the result of the quiz -->
+        </div>
+        
+        <!-- Added Paragraph Appearing After Quiz -->
+        <p id="choice-text" style="font-size: 25px; margin-top: 30px; font-weight: bold;">
+            And in the end, the choice is yours
+        </p>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

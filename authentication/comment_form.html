@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Add Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        .form {
+            gap: 10px;
+        }
+        .text-left {
+            text-align: left;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section-gradient">
+        <div class="container-large">
+            <div class="form-container">
+                <div class="form-wrapper">
+                    <form class="form" action="{% url 'Add Experience' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-title">
+                            <h2 class="heading-large">Add Your Experience</h2>
+                        </div>
+
+                        <label class="text-left" for="id_name">Name:</label>
+                        {{ form.name }}
+
+                        <label class="text-left" for="id_email">Email (optional):</label>
+                        {{ form.email }}
+
+                        <label class="text-left" for="id_major">Major:</label>
+                        {{ form.major }}
+
+                        <label class="text-left" for="id_body">Share Your Experience:</label>
+                        {{ form.body }}
+
+                        <input type="submit" data-wait="Please wait..." class="button-primary hover-dark" value="Submit">
+
+                        <div class="form-link-wrapper">
+                            <div class="text-small">Don't want to add?</div>
+                            <a href="{% url 'main' %}" class="link-small">
+                                <div class="text-small">Go Home</div>
+                                <div class="link-underline">
+                                    <div class="underline-animation"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Circles -->
+        {% comment %} <div class="background-circle circle-1"></div>
+        <div class="background-circle circle-2"></div>
+        <div class="background-circle circle-3"></div> {% endcomment %}
+    </section>
+</body>
+</html>

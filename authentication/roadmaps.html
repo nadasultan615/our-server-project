@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Majors</title>
+
+    <link rel="stylesheet" href="{% static 'css/roadmaps.css' %}">
+    
+</head>
+
+<body>
+    {% csrf_token %}
+    <div id="navbar">
+        <a href="{% url 'main' %}">
+            <img src="{% static 'img/logo.png' %}" alt=""  >
+        </a>
+        
+        <ul>
+            <li> <a href="{% url 'main' %}">Home</a></li>
+            <li> <a href="{% url 'main' %}#faqs">FAQs</a></li>
+            <li><a href ="{% url 'quiz' %}">Quiz</a><li>
+            <li><a href ="{% url 'jobs' %}">Available Jobs</a><li>
+            <li> <a href="{% url 'roadmaps' %}">Roadmaps</a></li>
+            <li> <a href="{% url 'show_comments' %}">Students Experience</a></li>
+        </ul>
+    </div>
+    <h2>College Majors</h2>
+    <p>What Can I Do With This Major?</p>
+    <div class="major-container">
+        <a href="{% url 'accounting' %}" class="major-item">
+            <p class="major-name">Accounting</p>
+        </a>
+        <a href="{% url 'finance' %}" class="major-item">
+            <p class="major-name">Finance</p>
+        </a>
+        <a href="{% url 'business_administration' %}" class="major-item">
+            <p class="major-name">Business</p>
+        </a>
+        <a href="{% url 'information_systems' %}" class="major-item">
+            <p class="major-name">Information_systems</p>
+        </a>
+        <a href="{% url 'economics' %}" class="major-item">
+            <p class="major-name">Economics</p>
+        </a>
+        <a href="{% url 'politics' %}" class="major-item">
+            <p class="major-name">politics</p>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const majorLinks = document.querySelectorAll('.major-link');
+            majorLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const majorName = this.textContent;
+                    alert('You clicked on ' + majorName);
+                });
+            });
+        });
+   </script>
+    
+
+</body>
+
+</html>

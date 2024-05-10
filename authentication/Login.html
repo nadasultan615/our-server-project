@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="section-gradient"> 
+        <div class="container-large"> 
+            <div class="form-container"> 
+                <div class="form-wrapper"> 
+                    <form class="form" action="/Login" method="post"> 
+                        {% csrf_token %}
+                        <div class="form-title">
+                            <h2 class="heading-large">Login</h2> 
+                        </div>
+                        <input 
+                            class="input-field" 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            placeholder="Name" 
+                            required
+                        >
+                        <input 
+                            class="input-field" 
+                            type="password" 
+                            id="password" 
+                            name="pass1" 
+                            placeholder="Password" 
+                            required
+                        >
+                        <input 
+                            type="submit" 
+                            data-wait="Please wait..." 
+                            class="button-primary hover-dark" 
+                            value="Login"
+                        />
+                        <div class="form-link-wrapper"> 
+                            <div class="text-small">Don't have an account?</div> 
+                            <a href="/Register" class="link-small"> 
+                                <div class="text-small">Signup</div>
+                                <div class="link-underline"> 
+                                    <div class="underline-animation"></div> 
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="background-circle circle-1"></div> 
+        <div class="background-circle circle-2"></div> 
+        <div class="background-circle circle-3"></div> 
+    </section>
+</body>
+</html>
